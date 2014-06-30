@@ -20,16 +20,12 @@ body{
 			}
 		}
 	}
-	#popoverContainer{
+	#popoverParent{
 		background-color: #037dfc;
 		border-radius: 10px;
 		color: white;
 		padding: 10px;
 		display: inline-block;
-		.popover{
-			opacity: 0.0;
-			pointer-events: none;
-			display: none;
-		}
+		line-height: 0px;
 	}
 }

@@ -1,46 +1,43 @@
 // simple-popover.js 0.4 by Zac North (@kato)
 // Licensed under MIT License
 // Requires only jQuery
-// Call the function .simplePopover(); on any div which contains a ".popover" child div.
+// Link the script and CSS to an HTML page, then call the function .simplePopover(); on any
+// div which contains a ".popover" child div.
 // The .popover content will be hidden, and revealed when clicking on the scripted parent div.
-// The example site was created with SCSS, but does not require anything else to be run.
+// The CSS file and example site were created with SCSS, but it is not required to run this.
 
 $(document).ready(function() {
-	$.fn.simplePopover = function( popoverToggleSelector ){
+	// Call this function (simplePopover();) on any div which contains a ".popover" child div to get popover functionality.
+	// Add the "example" class to your popover div for the example style.
+	$.fn.simplePopover = function(){
 		return this.each(function() {
-			var popoverOpen = false;
+			// Grabbing and storing the popover of this container for future use:
+			var popoverContainer = $(this).find('.popover');
+			// Detect a click anywhere in the document:
 			$('html').click(function (event) {
-				if(!$(event.target).parents("div").has('.popover').length) {
+				// If the click is not in the popover and the popover is open, then toggle popover (closing it):
+				if(!popoverContainer.is(event.target) && popoverContainer.hasClass("open")){
 					togglePopover();
 				}
 			});
-			$(this).has("img,p").click(function (event){
-				console.log("yay, I found a click!");
+			// Detect a click inside the container:
+			$(this).click(function (event){
+				// Stop event propogation and toggle popover.
 				event.stopPropagation();
 				togglePopover();
 			});
-			$('.popover', this).click(function (event){
+			$(popoverContainer, this).click(function (event){
+				// Stop event propagation upon click of popoverContainer or popover's parent, in case there are links or buttons inside.
 				event.stopPropagation();
 			});
 			function togglePopover(){
-				console.log("togglePopover triggered");
-				if(popoverOpen === true){
-					popoverOpen=false;
-					$('.popover').css("opacity", "0.0");
-					$('.popover').css("pointerEvents","none");
-					$('.popover').css("display", "none");
-					console.log("popover closed");
-				}
-				else if(popoverOpen === false){
-					popoverOpen=true;
-					$(this).children( ".popover" ).css("opacity", "1.0");
-					$(this).children( ".popover" ).css("pointerEvents","auto");
-					$(this).children( ".popover" ).css("display", "block");
-					console.log("popover open");
+				// Simple function to determine if the popover is opened or closed, then toggle it.
+				if(popoverContainer.hasClass("open")){
+					$(popoverContainer).removeClass("open");
 				}
 				else{
-					console.error("popover failed");
-				} 
+					$(popoverContainer).addClass("open");
+				}
 			}
 		});
 	};

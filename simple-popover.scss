@@ -1,0 +1,27 @@
+// simple-popover.js 0.4 by Zac North (@kato)
+// Licensed under MIT License
+// Requires only jQuery
+// Link the script and CSS to an HTML page, then call the function .simplePopover(); on any
+// div which contains a ".popover" child div.
+// The .popover content will be hidden, and revealed when clicking on the scripted parent div.
+// The CSS file and example site were created with SCSS, but it is not required to run this.
+
+
+.popover{ // Attach this class to all your popovers.
+	opacity: 0;
+	pointer-events: none; // Make sure we capture no pointer events
+	display: block;
+	position: absolute;
+	&.example{ // The example skin for the popover. Optional. Create your own by creating a new class.
+		color: black;
+		background-color: #54da40;
+		border-radius: 10px;
+		padding: 10px;
+		transition: 0.25s all;
+		line-height: 0px;
+	}
+	&.open{ // This class is automatically attached and detached by the extension.
+		opacity: 1;
+		pointer-events: auto;
+	}
+}

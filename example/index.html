@@ -3,21 +3,23 @@
 	<title>simple-popover.js Example</title>
 	<link rel="stylesheet" type="text/css" href="style.css"/>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../simple-popover.css"/>
 	<script type="text/javascript" src="../simple-popover.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$("#popoverContainer").simplePopover();
-			console.log("js loaded");
+			$("#popoverParent").simplePopover();
 		});
 	</script>
 </head>
 <body>
-	<h2>simple-popover.js Example</h2>
-	<h3>by Zac North (<a href="https://twitter.com/Kato">@kato</a>)</h3>
-	<div id="popoverContainer">
-		I'm a link to a popover.
-		<div class="popover">
-			<p>I'm a popover! Whee!</p>
+	<div id="container">
+		<h2>simple-popover.js Example</h2>
+		<h3>by Zac North (<a href="https://twitter.com/Kato">@kato</a>)</h3>
+		<div id="popoverParent">
+			<p>I'm a link to a popover.</p>
+			<div class="popover example">
+				<p>I'm a popover! Whee!</p>
+			</div>
 		</div>
 	</div>
 </body>
