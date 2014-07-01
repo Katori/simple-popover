@@ -1,6 +1,6 @@
 body {
-  width: 700px;
-  margin: 0 auto;
+  width: 90%;
+  margin: 0 5%;
   font-family: Helvetica, Arial, sans-serif; }
   body h2 {
     text-align: center; }
@@ -22,3 +22,8 @@ body {
     padding: 10px;
     display: inline-block;
     line-height: 0px; }
+
+@media only screen and (min-width: 700px) {
+  body {
+    width: 700px;
+    margin: 0 auto; } }
